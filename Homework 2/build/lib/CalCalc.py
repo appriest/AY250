@@ -46,11 +46,19 @@ def calculate(inputstr,return_float=False,wolfram_switch=False):
             print parsed[info_loc:end_loc]
     
 def test_1():
-    assert abs(4. - calculate('2**2')) < 0.001
+    assert abs(4. - calculate('2**2', return_float = True)) < 0.001
 
 def test_2():
-    assert abs(7.3459e22 - calculate('mass of moon')) < 0.001
+    assert abs(7.3459e22 - calculate('mass of moon', return_float = True)) < 0.001
     
+def test_3():
+    assert abs(64 - calculate('(2+2)**3', return_float = True)) < 0.001
+    
+def test_4():
+    assert abs(52.14 - calculate('number of weeks in a year', return_float = True)) < 0.001
+    
+def test_4():
+    assert abs(1176. - calculate('number of hours in 7 weeks', return_float = True)) < 0.001
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Evaluation Parser')
